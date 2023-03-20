@@ -1,0 +1,14 @@
+.profile__edit-image {
+    width: 26px;
+    height: 26px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 47px;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+
+.profile__edit-image:hover {
+    opacity: 1;
+    cursor: pointer;
+}

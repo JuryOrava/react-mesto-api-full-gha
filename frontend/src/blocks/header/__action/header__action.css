@@ -1,0 +1,11 @@
+.header__action {
+    color: #FFF;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header__action:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,6 @@
+.popup__container_status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

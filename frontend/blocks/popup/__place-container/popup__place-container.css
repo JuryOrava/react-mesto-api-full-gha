@@ -1,0 +1,14 @@
+.popup__place-container {
+    padding: 0;
+    max-height: 75vh;
+    max-width: 75vw;
+    position: relative;
+    margin: auto;
+}
+
+@media screen and (max-width: 450px) {
+    .popup__place-container {
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+  }

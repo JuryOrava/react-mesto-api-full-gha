@@ -1,0 +1,18 @@
+.profile__add {
+    background: none;
+    border: none;
+    border: 2px solid white;
+    width: 150px;
+    
+}
+
+.profile__add:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+    .profile__add {
+        width: 282px;
+    }
+  }

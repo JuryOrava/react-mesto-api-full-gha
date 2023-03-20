@@ -1,0 +1,14 @@
+.elements__item {
+    background: white;
+    height: 361px;
+    width: 282px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.elements__item:nth-child(3n) {
+    margin-right: 0;
+}

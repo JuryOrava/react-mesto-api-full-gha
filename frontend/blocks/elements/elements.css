@@ -1,0 +1,17 @@
+.elements {
+    padding: 0;
+    max-width: 880px;
+    margin: 51px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+@media screen and (max-width: 860px) {
+    .elements {  
+        justify-content: space-around;
+        margin-top: 36px;
+        margin-bottom: 28px;
+    }
+  }
