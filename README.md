@@ -4,12 +4,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/JuryOrava/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
 IP-адрес x.x.x.x
 
-Frontend https://...
+Frontend https://51.250.68.63
 
 Backend https://...

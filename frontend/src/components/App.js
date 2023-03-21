@@ -18,9 +18,8 @@ import ProtectedRoute from "./ProtectedRoute.js";
 import InfoTooltip from './InfoTooltip.js';
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-54',
+  baseUrl: 'https://api.juryjo-mesto.nomoredomains.work',
   headers: {
-    authorization: '1bade37d-71e9-4ab5-a8c1-c0fae706e629',
     'Content-Type': 'application/json'
   },
 });
