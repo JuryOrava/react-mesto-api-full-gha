@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
-require('dotenv').config();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const routerUser = require('./routes/users');
@@ -31,13 +31,14 @@ const allowedCors = [
 ];
 
 app.use(function(req, res, next) {
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
+  const { origin } = req.headers; // Записываем в переменную origin соответствующий заголовок
+
+  if (allowedCors.includes(origin)) { // Проверяем, что значение origin есть среди разрешённых доменов
     res.header('Access-Control-Allow-Origin', origin);
   }
 
   next();
-});
+})
 
 app.get('/crash-test', () => {
   setTimeout(() => {
