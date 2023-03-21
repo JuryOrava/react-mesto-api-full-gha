@@ -8,8 +8,8 @@
 
 ## Ссылки на проект
 
-IP-адрес <51.250.68.63>
+IP 51.250.68.63
 
-Frontend: https://juryjo-mesto.nomoredomains.work
+Frontend https://juryjo-mesto.nomoredomains.work
 
-Backend: https://api.juryjo-mesto.nomoredomains.work
+Backend https://api.juryjo-mesto.nomoredomains.work
