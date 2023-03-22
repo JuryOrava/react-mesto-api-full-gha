@@ -15,13 +15,10 @@ export const register = (password, email) => {
     },
     body: JSON.stringify({password, email})
   })
-  .then((response) => {
-    return _checkResponse(response)
+  .then((res) => {
+    console.log(res, res.json())
+    return _checkResponse(res)
   })
-  /*.then((res) => {
-    return res;
-  })
-  .catch((err) => console.log(err));*/
 };
 export const authorize = (password, email) => {
   return fetch(`${BASE_URL}/signin`, {
@@ -47,5 +44,4 @@ export const checkToken = (token) => {
   .then((response) => {
     return _checkResponse(response)
   })
-  //.then(data => data)
 }

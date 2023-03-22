@@ -24,7 +24,6 @@ const api = new Api({
   },
 });
 
-
 function App() {
 
   const [currentUser, setСurrentUser] = React.useState([]);
@@ -198,8 +197,9 @@ function App() {
   const handleSubmitRegister = (password, email) => {
       auth.register(password, email)
       .then((res) => {
-        if(res.data) {
+        if(res.ok) {
           setIsInfoTooltipPopup(true);
+          console.log(res.data)
         }
         handleInfoTooltipPopupOpened();
         }
