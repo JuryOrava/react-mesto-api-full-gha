@@ -14,7 +14,7 @@ class Api {
     getInitialCards() {
         const token = localStorage.getItem('token');
         return fetch(`${this._baseUrl}/cards`, { headers:  {
-            autorization: `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         } })
         .then(res => {
@@ -25,7 +25,7 @@ class Api {
     getUserInfo() {
         const token = localStorage.getItem('token');
         return fetch(`${this._baseUrl}/users/me`, { headers:  {
-            autorization: `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         } })
         .then(res => {
@@ -38,7 +38,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards/${id}`, {
             method: 'DELETE',
             headers:  {
-                autorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         })
@@ -52,7 +52,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers:  {
-                autorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -69,7 +69,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers:  {
-                autorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -82,12 +82,13 @@ class Api {
          });
     }
 
-    likeCard(id) {
+    likeCard(id, meth) {
+        console.log(meth)
         const token = localStorage.getItem('token');
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-            method: 'PUT',
+            method: meth,
             headers:  {
-                autorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         })
@@ -101,7 +102,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
             method: 'DELETE',
             headers:  {
-                autorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         })
@@ -115,7 +116,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers:  {
-                autorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({

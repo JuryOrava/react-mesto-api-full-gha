@@ -63,7 +63,8 @@ function App() {
       auth.checkToken(token)
       .then((res) => {
         if (res){
-          setEmail(res.data.email)
+          console.log(res)
+          setEmail(res.email)
           setLoggedIn(true);
           navigate("/", {replace: true})
         }
@@ -121,11 +122,9 @@ function App() {
   }
 
   function handleCardLike(card) {
-    // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-    
-    // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.likeCard(card._id, !isLiked)
+
+    api.likeCard(card._id, !isLiked ? 'PUT' : 'DELETE')
     .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
@@ -143,10 +142,6 @@ function App() {
     .catch((err) => {
       console.log(err);
     })
-    /*.finally(() => {
-      renderLoading(false, popup, btn, text)
-    });
-    renderLoading(true, popup, btn, text);*/
   }
 
   function handleUpdateUser(userData) {
@@ -197,9 +192,8 @@ function App() {
   const handleSubmitRegister = (password, email) => {
       auth.register(password, email)
       .then((res) => {
-        if(res.data) {
+        if(res) {
           setIsInfoTooltipPopup(true);
-          console.log(res.data)
         }
         handleInfoTooltipPopupOpened();
         }
@@ -218,14 +212,16 @@ function App() {
 const handleSubmitLogin = (password, email) => {   
   auth.authorize(password, email)
   .then((data) => {
+    console.log(data)
     if (data.token){
       handleLogin();
       navigate('/', {replace: true});
+      localStorage.setItem('token', data.token);
+      return data;
     }
-    if (data.token){
-    localStorage.setItem('token', data.token);
-    return data;
-    }
+    /*if (data.token){
+    
+    }*/
   })
   .catch(err => console.log(err));
 }

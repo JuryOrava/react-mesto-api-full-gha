@@ -1,13 +1,10 @@
 export const BASE_URL = 'https://api.juryjo-mesto.nomoredomains.work';
 
 function _checkResponse(res) {
-  const response = res.json()
   if (!res.ok) {
       return Promise.reject(`Ошибка: ${res.status}`); 
   }
-  response.then(r => {return r})
-  //console.log(response)
-  //return response;
+  return res.json();
 }
 
 export const register = (password, email) => {
