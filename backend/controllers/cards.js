@@ -12,7 +12,7 @@ module.exports.createCard = (req, res, next) => {
   Card.create({
     name, link, owner: req.user._id, email, password,
   })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequesrError('Переданы некорректные данные при создании карточки.'));
@@ -23,14 +23,14 @@ module.exports.createCard = (req, res, next) => {
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate(['owner', 'likes'])
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
 function deleteValidCard(req, res, next) {
   Card.findByIdAndRemove(req.params.cardId)
     .then((thisCard) => {
-      res.send({ data: thisCard });
+      res.send(thisCard);
     })
     .catch(next);
 }
@@ -66,7 +66,7 @@ module.exports.likeCard = (req, res, next) => {
       if (card == null) {
         return next(new NotFoundError(`Передан несуществующий _id:${req.params.cardId} карточки.`));
       } else {
-        res.send({ data: card });
+        res.send(card);
       }
     })
     .catch((err) => {
@@ -87,7 +87,7 @@ module.exports.dislikeCard = (req, res, next) => {
       next(new NotFoundError(`Передан несуществующий _id:${req.params.cardId} карточки.`));
     })
     .then((card) => {
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

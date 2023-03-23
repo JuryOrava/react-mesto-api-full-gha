@@ -197,7 +197,7 @@ function App() {
   const handleSubmitRegister = (password, email) => {
       auth.register(password, email)
       .then((res) => {
-        if(res.ok) {
+        if(res.data) {
           setIsInfoTooltipPopup(true);
           console.log(res.data)
         }

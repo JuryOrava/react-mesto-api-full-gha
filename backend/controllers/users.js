@@ -41,7 +41,7 @@ module.exports.getUserById = (req, res, next) => {
       if (user == null) {
         next(new NotFoundError(`Пользователь с указанным _id:${req.params.userId} не найден.`));
       } else {
-        res.send({ data: user });
+        res.send(user);
       }
     })
     .catch((err) => {
@@ -54,7 +54,7 @@ module.exports.getUserById = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -79,7 +79,7 @@ module.exports.editProfile = (req, res, next) => {
     { name, about },
     { new: true, runValidators: true },
   )
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequesrError('Переданы некорректные данные при обновлении профиля.'));
@@ -95,7 +95,7 @@ module.exports.editAvatar = (req, res, next) => {
     { avatar },
     { new: true, runValidators: true },
   )
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
         return next(new BadRequesrError('Переданы некорректные данные при обновлении профиля.'));
