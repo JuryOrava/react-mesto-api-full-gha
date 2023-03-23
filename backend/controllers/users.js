@@ -28,7 +28,8 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       if (err.code === 11000) {
         return next(new ConflictingRequestError('Пользователь с таким Email уже существует!'));
-      } else if (err.name === 'ValidationError') {
+      }
+      if (err.name === 'ValidationError') {
         return next(new ClientError(`Введен некорректный логин или пароль. ${err.name}`));
       }
       next(new Error());
@@ -110,7 +111,7 @@ module.exports.login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
       res.send({ token });
     })
     .catch(next);
